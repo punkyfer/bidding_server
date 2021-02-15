@@ -12,15 +12,15 @@ RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 
-# Bundle app source
-COPY . .
-
 # Install redis server
 RUN apt update 
 RUN apt install -y redis-server
 
 # Install redis client
 RUN npm install redis
+
+# Bundle app source
+COPY . .
 
 EXPOSE 8080
 ADD start.sh /
