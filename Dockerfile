@@ -39,8 +39,10 @@ RUN echo "===> Installing  tools..."  && \
 
 # Bundle app source
 COPY . .
+RUN chmod +x ./calibration/benchmark.sh
 
 EXPOSE 8080
 ADD start.sh /
+RUN chmod +x /start.sh
 CMD [ "/start.sh" ]
 

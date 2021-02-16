@@ -75,6 +75,12 @@ function find_max_campaign(position, publisher, res) {
 
 // create an http server to handle requests and response
 http.createServer(function (req, res) {
-	const queryObject = url.parse(req.url,true).query;
-	find_max_campaign(queryObject['position'], queryObject['publisherid'], res)
+	const parsed_url = url.parse(req.url,true);
+	const path = parsed_url.pathname;
+	const queryObject = parsed_url.query;
+	if (path == "/bid")
+		find_max_campaign(queryObject['position'], queryObject['publisherid'], res)
+	else
+		res.writeHead(204, {'Connection': 'keepalive'});
+		res.end();
 }).listen(PORT);
