@@ -3,7 +3,7 @@
 To run the bidding server first build the docker image with the name "node-web-app"
   
   ```
-  cd {Git Repo Route}/bidding_server
+  cd {bidding_server Repo Route}
   docker build -t node-web-app .
   ```
   
