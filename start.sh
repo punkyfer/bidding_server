@@ -5,6 +5,6 @@ redis-server --daemonize yes
 # Load test data
 cat /usr/src/app/script.redis | redis-cli --pipe
 
-#node server.js
+node server.js
 
-tail -f /dev/null
+#tail -f /dev/null

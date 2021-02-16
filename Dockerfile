@@ -38,7 +38,7 @@ RUN echo "===> Installing  tools..."  && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /opt/wrk/
 
 # Bundle app source
-#COPY . .
+COPY . .
 
 EXPOSE 8080
 ADD start.sh /
