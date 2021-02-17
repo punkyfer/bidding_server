@@ -13,8 +13,10 @@ Once the docker image is built it is convenient to add additional permissions to
   chmod +x start_container.sh
   ```
   
-To run the bidding server execute start_container.sh.
-
+To run the bidding server execute:
+```
+./start_container.sh.
+```
 The server listens for these requests:
 
   ```
