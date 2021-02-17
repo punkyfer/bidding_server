@@ -20,7 +20,7 @@ To run the bidding server execute:
 The server listens for these requests:
 
   ```
-  0.0.0.0:8080/bid?position=XXX&publisheridYYY
+  127.0.0.1:8080/bid?position=XXX&publisheridYYY
   ```
 
 It will attempt to find compatible campaigns amongst the stored ones and return the one with the highest CPM.
