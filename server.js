@@ -53,10 +53,33 @@ client.hvals("testcampaigns#", function(err, values){
 	}
 });
 
+function find_list_intersection(arr1, arr2) {
+	let campaigns = new Array(100);
+	var result = [];
+	for (var i=0; i<Math.max(arr1.length, arr2.length); i++){
+		if (i<arr1.length) {
+			if (campaigns[arr1[i]]==null) {
+				campaigns[arr1[i]] = 1;
+			} else {
+				result.push(arr1[i]);
+			}
+		}
+		if (i<arr2.length) {
+			if (campaigns[arr2[i]]==null) {
+				campaigns[arr2[i]] = 1;
+			} else {
+				result.push(arr2[i]);
+			}
+		}
+	}
+	return result
+}
+
 function find_max_campaign(position, publisher, res) {
 	if (position<=10000 && publisher<=10000) {
-		var all_campaigns = [].concat(position_campaigns[position],open_positions,publisher_campaigns[publisher],open_publishers);
-		var available_campaigns = all_campaigns.filter((e, i, a) => a.indexOf(e) !== i) // Get duplicates
+		/*var all_campaigns = [].concat(position_campaigns[position],open_positions,publisher_campaigns[publisher],open_publishers);
+		var available_campaigns = all_campaigns.filter((e, i, a) => a.indexOf(e) !== i) // Get duplicates*/
+		var available_campaigns = find_list_intersection([].concat(position_campaigns[position],open_positions), [].concat(publisher_campaigns[publisher],open_publishers));
 		
 		var max_cpm = 0;
 		for (var i=0; i<available_campaigns.length; i++) {
